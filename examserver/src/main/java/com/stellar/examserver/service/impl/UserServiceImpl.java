@@ -6,9 +6,10 @@ import com.stellar.examserver.repo.RoleRepository;
 import com.stellar.examserver.repo.UserRepository;
 import com.stellar.examserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
-
+@Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
