@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private userService:UserService ) { }
+  constructor(private userService:UserService, private snack:MatSnackBar ) { }
 
   public user ={
     userName:'',
@@ -23,7 +24,9 @@ export class SignupComponent implements OnInit {
   formSubmit(){
     console.log(this.user);
     if (this.user.userName =='' || this.user.userName == null){
-      alert('User is required !!');
+      this.snack.open('Username required !!!', 'ok',{
+        duration:3000
+      })
       return;
     }
     this.userService.addUser(this.user).subscribe(
