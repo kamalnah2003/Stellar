@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -7,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService:UserService ) { }
 
   public user ={
-    username:'',
+    userName:'',
     password:'',
     firstName:'',
     lastName:'',
@@ -18,11 +19,38 @@ export class SignupComponent implements OnInit {
     phone:'',
 };
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   formSubmit(){
-    alert("submit");
+    console.log(this.user);
+    if (this.user.userName =='' || this.user.userName == null){
+      alert('User is required !!');
+      return;
+    }
+    this.userService.addUser(this.user).subscribe(
+
+      (data) => {
+        console.log(data);
+         alert('success');
+         // success
+      },
+      (error) => {
+           // error
+        console.log(error);
+        alert('something went wrong');
+      }
+
+      )
+    //   console.log(data);
+    //   alert('success');
+    //   },
+    //   (error) => {
+    //   // error
+    //   console.log(error);
+    //   alert('something went wrong');
+    // }
+      
      
   }
 
+   
 }
