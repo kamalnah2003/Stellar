@@ -29,8 +29,7 @@ public class UserServiceImpl implements UserService {
 
         }else {
             //user create now
-            for (UserRole ur:userRoles)
-            {
+            for (UserRole ur:userRoles){
                 roleRepository.save(ur.getRole());
 
             }
@@ -38,6 +37,18 @@ public class UserServiceImpl implements UserService {
             user.getUserRoles().addAll((userRoles));
             local = this.userRepository.save(user);
         }
-        return null;
+        return local;
     }
-}
+//GETTING USER BY USERNAME
+    @Override
+    public User getUser(String userName) {
+        return this.userRepository.findByUserName(userName);
+    }
+
+
+    @Override
+    public void deleteUser(Long userId) {
+        this.userRepository.deleteById(userId);
+    }
+    }
+
