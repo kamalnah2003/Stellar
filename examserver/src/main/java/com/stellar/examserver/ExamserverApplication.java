@@ -3,7 +3,7 @@ package com.stellar.examserver;
 import com.stellar.examserver.model.Role;
 import com.stellar.examserver.model.User;
 import com.stellar.examserver.model.UserRole;
-// import com.stellar.examserver.service.UserService;
+import com.stellar.examserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

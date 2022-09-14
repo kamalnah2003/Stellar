@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signup',
@@ -33,7 +34,11 @@ export class SignupComponent implements OnInit {
 
       (data) => {
         console.log(data);
-         alert('success');
+         Swal.fire({
+          text: 'Thank you for Registering in stellar',
+          icon: 'success',
+          confirmButtonText: 'ok'
+        })
          // success
       },
       (error) => {
