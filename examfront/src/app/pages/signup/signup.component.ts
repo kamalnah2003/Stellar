@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-signup',
@@ -35,17 +36,51 @@ export class SignupComponent implements OnInit {
       })
       return;
     }
+    if (this.user.password =='' || this.user.password == null){
+      this.snack.open('Password required !!!', 'ok',{
+        duration:3000
+      })
+      return;
+    }
+    if (this.user.lastName =='' || this.user.lastName == null){
+      this.snack.open('Last name required !!!', 'ok',{
+        duration:3000
+      })
+      return;
+    }
+    if (this.user.email =='' || this.user.email == null){
+      this.snack.open('Email required !!!', 'ok',{
+        duration:3000
+      })
+      return;
+    }
+    if (this.user.phone =='' || this.user.phone == null){
+      this.snack.open('Phone required !!!', 'ok',{
+        duration:3000
+      })
+      return;
+    }
     this.userService.addUser(this.user).subscribe(
 
-      (data) => {
+      (data:any) => {
         console.log(data);
-         alert('success');
+        Swal.fire('Sucess','User Registered successfully your User id is' + data.id,'success')
+        
+
          // success
       },
       (error) => {
            // error
         console.log(error);
-        alert('something went wrong');
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+          footer: '<a href="">Why do I have this issue?</a>'
+        })
+        this.snack.open('Something went wrong','ok',{
+          duration:3000
+        })
       }
 
       )
