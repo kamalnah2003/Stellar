@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private userService:UserService,private snack:MatSnackBar) { }
+  constructor(private userService:UserService, private snack:MatSnackBar ) { }
 
   public user ={
     userName:'',
@@ -24,7 +24,15 @@ export class SignupComponent implements OnInit {
   formSubmit(){
     console.log(this.user);
     if (this.user.userName =='' || this.user.userName == null){
-      alert('User is required !!');
+      this.snack.open('Username required !!!', 'ok',{
+        duration:3000
+      })
+      return;
+    }
+    if (this.user.firstName =='' || this.user.firstName == null){
+      this.snack.open('First Name required !!!', 'ok',{
+        duration:3000
+      })
       return;
     }
     this.userService.addUser(this.user).subscribe(
