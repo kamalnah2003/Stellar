@@ -3,10 +3,10 @@ import Navbar from './compenents/Navbar';
 
 function App() {
   return (
-    <>
-   <Navbar/>
-   <addEmployee/>
-   </>
+    
+   <Navbar />
+   
+   
   );
 }
 
