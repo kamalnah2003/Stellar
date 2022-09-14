@@ -1,9 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html, body { height: 100%;
+background:#cfd8dc; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 .text-center{
     text-align: center;
+}
+
+.m120{
+    margin-left: 20px !important;
+}
+.mr20{
+    margin-right: 20px !important;
+}
+.mt20{
+    margin-top: 20px !important;
+}
+.mb20{
+    margin-bottom: 20px !important;
+}
+
+.ml10{
+    margin-left: 10px !important;
+}
+.mr10{
+    margin-right: 10px !important;
+}
+.mt10{
+    margin-top: 10px !important;
+}
+.mb10{
+    margin-bottom: 10px !important;
+}
+
+.mat-toolbar.mat-primary {
+    background: #2ca8a3;
+    color: #fff;
+  }
+.mat-raised-button.mat-primary{
+    background-color:#2d8380;
+    
+
+}
+.mat-raised-button{
+    background-color: #586362;
+    color: #fff;
+}
+.mat-card:not([class*=mat-elevation-z]) {
+    box-shadow: 0 1px 0px -1px rgb(151, 188, 207), 
+                0 1px 0px 0 rgb(151, 188, 207), 
+                0 7px 8px 0 rgb(90, 136, 126);
 }

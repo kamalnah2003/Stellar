@@ -1,7 +1,4 @@
-.example-spacer {
-    flex: 1 1 auto;
-  }
-  .full-width{
+.full-width{
     width:100%;
 }
 .m120{
@@ -29,7 +26,3 @@
 .mb10{
     margin-bottom: 10px !important;
 }
-.mat-toolbar.mat-primary {
-    background: #2d8380;
-    color: #fff;
-  }

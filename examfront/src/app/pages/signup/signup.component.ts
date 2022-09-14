@@ -64,7 +64,7 @@ export class SignupComponent implements OnInit {
 
       (data:any) => {
         console.log(data);
-        Swal.fire('Sucess','User Registered successfully your User id is' + data.id,'success')
+        Swal.fire('Sucess','User Registered successfully your User id is ' + data.id , 'success')
         
 
          // success
@@ -72,13 +72,7 @@ export class SignupComponent implements OnInit {
       (error) => {
            // error
         console.log(error);
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong!',
-          footer: '<a href="">Why do I have this issue?</a>'
-        })
-        this.snack.open('Something went wrong','ok',{
+        this.snack.open('User already exists','ok',{
           duration:3000
         })
       }
