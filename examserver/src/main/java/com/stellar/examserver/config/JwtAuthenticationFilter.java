@@ -4,7 +4,12 @@ import com.stellar.examserver.service.impl.UserDetailsServiceimpl;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.apache.tomcat.jni.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -50,7 +55,19 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
              //vaildated
         if (username !=null && SecurityContextHolder.getContext().getAuthentication()==null)
         {
-        this.userDetailsServiceimpl
+          final UserDetails userDetails = this.userDetailsServiceimpl.loadUserByUsername(username);
+          if(this.jwtUtil.validateToken(jwtToken,userDetails)){
+
+            //token is Valid
+            UsernamePasswordAuthenticationToken usernamePasswordAuthenticationFilter = new UsernamePasswordAuthenticationToken(userDetails,null,userDetails.getAuthorities());
+            usernamePasswordAuthenticationFilter.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+
+            SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationFilter);
+           }
+        }else
+        {
+            System.out.println("token is not Valid ");
         }
+        filterChain.doFilter(request,response);
     }
 }
