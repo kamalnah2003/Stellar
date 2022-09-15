@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
-public class JwtAuthenticationFilter extends OncePerRequestFilter {
+public class    JwtAuthenticationFilter extends OncePerRequestFilter {
     @Autowired
     private UserDetailsServiceimpl userDetailsServiceimpl;
     @Autowired
@@ -59,10 +59,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
           if(this.jwtUtil.validateToken(jwtToken,userDetails)){
 
             //token is Valid
-            UsernamePasswordAuthenticationToken usernamePasswordAuthenticationFilter = new UsernamePasswordAuthenticationToken(userDetails,null,userDetails.getAuthorities());
-            usernamePasswordAuthenticationFilter.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+            UsernamePasswordAuthenticationToken usernamePasswordAuthentication = new UsernamePasswordAuthenticationToken(userDetails,null,userDetails.getAuthorities());
+            usernamePasswordAuthentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
-            SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationFilter);
+            SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthentication);
            }
         }else
         {

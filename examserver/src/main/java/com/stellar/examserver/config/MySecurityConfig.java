@@ -16,6 +16,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
@@ -27,7 +29,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
     private JwtAuthenticationEntryPoint unauthorizedHandler;
     @Autowired
     private JwtAuthenticationFilter jwtAuthenticationFilter;
-
+    @Autowired
     private UserDetailsServiceimpl userDetailsServiceimpl;
 
     @Override
@@ -36,14 +38,15 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
-    public BCryptPasswordEncoder passwordEncoder()
+    @Bean
+    public PasswordEncoder passwordEncoder()
     {
-        return new BCryptPasswordEncoder();
+        return NoOpPasswordEncoder.getInstance();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(this.userDetailsServiceimpl).passwordEncoder(passwordEncoder())
+        auth.userDetailsService(this.userDetailsServiceimpl).passwordEncoder(passwordEncoder());
     }
 
     @Override
@@ -61,8 +64,8 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
-        super.configure(http);
+
     }
 }
