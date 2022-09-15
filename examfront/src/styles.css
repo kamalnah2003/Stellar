@@ -51,5 +51,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-card:not([class*=mat-elevation-z]) {
     box-shadow: 0 1px 0px -1px rgb(151, 188, 207), 
                 0 1px 0px 0 rgb(151, 188, 207), 
-                0 7px 8px 0 rgb(90, 136, 126);
+                0 3px 8px 0 rgb(88, 165, 141);
+}
+.mat-raised-button.mat-accent {
+    background-color: #576766;
+    color: floralwhite;
 }
