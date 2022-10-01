@@ -8,7 +8,8 @@ import ForgetPasswordPage from './components/pages/ForgetPasswordPage'
 import HomePage from './components/pages/HomePage'
 import UserDashboard from './components/pages/userdashboard'
 import './App.css'
-import Users from './components/pages/DBCode'
+// import Users from './components/pages/DBCode'
+import login from './components/pages/login'
 
 // import axios from "axios";
 
@@ -44,7 +45,7 @@ export default function App() {
                     <Route path="/forget-password" component={ ForgetPasswordPage } />
                     <Route path="/home" component={ HomePage } />
                     <Route path="/userdashboard" component={ UserDashboard } />
-                    
+					<Route path="/login1" component={login} />                    
                 </Switch>
                 
             </div>

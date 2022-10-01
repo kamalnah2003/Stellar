@@ -1,7 +1,6 @@
 import React from 'react'
 // import { Link } from 'react-router-dom'
 import Navbar from './navbar'
-import logo from '../../assets/images/log.png'
 
 export default function UserDashboard() {
     return (

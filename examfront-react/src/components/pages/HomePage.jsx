@@ -24,7 +24,7 @@ export default function HomePage() {
          <div class="flex justify-around  gap-4">
             <div class="text-center ">
                
-               <Link to="/login">
+               <Link to="/login1">
                <button class="bg-black drop-shadow-2xl  text-white font-semibold py-2 px-8 rounded">Staff Login </button>
 
                </Link>
