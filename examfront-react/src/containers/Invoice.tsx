@@ -1,0 +1,56 @@
+import { INVOICE_LIST } from 'constants/invoice_list'
+import Table from 'components/Shared/Table'
+import Record from 'components/Pages/Invoice/Record'
+
+import Icon from 'components/Shared/Icon'
+
+const Invoice = () => {
+  return (
+    <section className="pt-3 pb-1 bg-[#283046] rounded-lg">
+      <h1 className="mb-2 ml-5 uppercase font-semibold text-sm">Student MarkList</h1>
+      <div className="w-full overflow-x-auto">
+        <Table>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell collapsing>Reg No</Table.HeaderCell>
+              <Table.HeaderCell collapsing>
+                <Icon name="TrendingUp" color="#d0d2d6" width={14} height={14} />
+              </Table.HeaderCell>
+              <Table.HeaderCell className="uppercase">Name</Table.HeaderCell>
+              <Table.HeaderCell collapsing className="uppercase">
+                Marks
+              </Table.HeaderCell>
+              <Table.HeaderCell collapsing className="uppercase">
+                Exam  Data
+              </Table.HeaderCell>
+              <Table.HeaderCell collapsing className="uppercase">
+                Percentage
+              </Table.HeaderCell>
+              <Table.HeaderCell collapsing className="uppercase">
+                Actions
+              </Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+
+          <Table.Body>
+            {INVOICE_LIST.map((item, index) => (
+              <Record
+                key={index}
+                id={item.id}
+                name={item.name}
+                email={item.email}
+                image={item.avatar}
+                total={item.total}
+                issuedDate={item.issuedDate}
+                balance={item.balance}
+                status={item.status}
+              />
+            ))}
+          </Table.Body>
+        </Table>
+      </div>
+    </section>
+  )
+}
+
+export default Invoice
