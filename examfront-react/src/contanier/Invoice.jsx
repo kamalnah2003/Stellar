@@ -4,7 +4,7 @@ import Record from 'components/Pages/Invoice/Record'
 
 import Icon from 'components/Shared/Icon'
 
-const Invoice = () => {
+const Student = () => {
   return (
     <section className="pt-3 pb-1 bg-[#283046] rounded-lg">
       <h1 className="mb-2 ml-5 uppercase font-semibold text-sm">Student MarkList</h1>
@@ -53,4 +53,4 @@ const Invoice = () => {
   )
 }
 
-export default Invoice
+export default Student

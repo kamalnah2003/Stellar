@@ -2,7 +2,7 @@ import CongratulationsCard from "components/Pages/Dashboard/CongratulationsCard"
 import Calender from "components/Pages/Dashboard/calender";
 import Notifictaion from "components/Pages/Dashboard/Notification";
 
-const AdminDashboard = () => {
+const StaffDashboard = () => {
     return (
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-7 lg:grid-rows-[227px_400px_553px]">
         {/* Congratulations Card */}
@@ -37,12 +37,11 @@ const AdminDashboard = () => {
           {/* <SupportTrackerCard /> */}
           <Calender/>
         </div>
-  
-        {/* User Timeline Card */}
-       
+        
       </section>
+      
     )
   }
   
-  export default AdminDashboard
+  export default StaffDashboard
   

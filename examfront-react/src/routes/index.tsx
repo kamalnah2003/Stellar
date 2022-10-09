@@ -1,10 +1,8 @@
-import Dashboard from 'containers/Dashboard'
-import Calendar from 'containers/Calendar'
-import Mail from 'containers/Mail'
-import Invoice from 'containers/Invoice'
-import ToDo from 'containers/ToDo'
-import AdminDashboard from 'Admin/Dashboard'
-
+import Dashboard from 'contanier/Dashboard'
+import Calender from 'components/Pages/Dashboard/calender'
+import Mail from 'contanier/Mail'
+import Student from 'contanier/Invoice'
+import ToDo from 'contanier/ToDo'
 export const routes = [
   {
     path: '/',
@@ -12,22 +10,19 @@ export const routes = [
   },
   {
     path: '/calendar',
-    element: <Calendar />,
+    element: <Calender />,
   },
   {
     path: '/mail',
     element: <Mail />,
   },
   {
-    path: '/invoice',
-    element: <Invoice />,
+    path: '/Student',
+    element: <Student />,
   },
   {
     path: '/todo',
     element: <ToDo />,
   },
-  {
-    path: 'admin',
-    element: <AdminDashboard/>,
-  },
+ 
 ]
